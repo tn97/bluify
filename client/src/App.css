@@ -30,3 +30,36 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: #b2beb5;
+}
+
+.disclaimerBox {
+  min-height: 100px;
+  min-width: 300px;
+  height: 40%;
+  width: 40%;
+  background-color: #366c97;
+  top:50%;
+  left: 50%;
+  position: fixed;
+  transform:translate(-50%, -50%);
+  border-width: 5px;
+  border-style: inset;
+  border-color: #4169e1;
+}
+
+.center {
+  display: block;
+  margin: 5% auto;
+  width: 80%;
+}
+
+.loginBtn {
+  background-color: #194162
+}
+
+.textColor {
+  color: #698cff;
+}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import API from './utils/API';
-import './App.css'
+import './App.css';
 
 // for scoping
 let player;
@@ -72,7 +72,7 @@ class App extends Component {
         const webPlayer = res.data.devices.find(player => {
           return player.name === "SpotifyFM"
         })
-        console.log(webPlayer)
+        console.log('webPlayer: ' + webPlayer)
         API.setWebPlayer(webPlayer.id, access_token)
           .then(res => {
             console.log(res.data);
