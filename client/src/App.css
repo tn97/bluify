@@ -2,35 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 body {
   background-color: #b2beb5;
 }
@@ -60,6 +31,45 @@ body {
   background-color: #194162
 }
 
+h2 {
+  margin: 2px auto;
+}
+
 .textColor {
   color: #698cff;
+}
+
+/* playlistTagColor was being over-ruled by this. So i took the default "inherit" property of color and changed it to the color of choice */
+a:not([href]):not([tabindex]) {
+  color: #c0c0c0;
+}
+
+a {
+  margin: 0;
+}
+
+.dataTag {
+  padding: 10px;
+  margin: 4px 0 4px 0;
+  display: inline-block;
+  max-width: 80%;
+}
+
+.contentContainer {
+  margin: 12px 0 0 0;
+  background-color: #183f7a;
+  width: 60%;
+  text-align: center;
+}
+
+.masterContainer {
+  background-color: #183f7a;
+  width: 60%;
+  margin: 0 auto;
+  padding: 0;
+  /* filter: blur(20px);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
 }

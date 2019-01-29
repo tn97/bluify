@@ -63,5 +63,14 @@ export default {
         Authorization: `Bearer ${accessToken}`
       }
     })
+  },
+  
+  pauseTrack: function(playerId, accessToken) {
+    console.log("Pausing the track on active player");
+    return axios.put(`https://api.spotify.com/v1/me/player/pause?device_id=${playerId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
   }
 }

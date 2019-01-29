@@ -123,7 +123,7 @@ class App extends Component {
     API
       .getSpotifyProfile(access_token)
       .then(res => {
-        this.setState({ userInfo: res.data })
+        this.setState({ userInfo: res.data });
       })
       .catch(err => console.log(err));
   }
@@ -133,7 +133,10 @@ class App extends Component {
     API
       .getSpotifyPlaylists(this.state.access_token)
       .then(res => {
-        this.setState({ playlistData: res.data })
+        this.setState({
+          playlistData: res.data,
+          showPlaylist: false
+        })
       })
       .catch(err => console.log(err));
   }
@@ -159,23 +162,30 @@ class App extends Component {
 
   playTrack = (songURI) => {
     console.log(songURI);
-    API.playTrack(songURI, this.state.activePlayer.id, this.state.access_token)
+    API
+      .playTrack(songURI, this.state.activePlayer.id, this.state.access_token)
       .then(res => {
         console.log(res.data);
       })
       .catch(err => { console.log(err) });
   }
 
+  pauseTrack = () => {
+    API
+      .pauseTrack(this.state.activePlayer.id, this.state.access_token)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => { console.log(err) });
+  }
+
+  // stopped after inserting pauseTrack into app.js and API.js. Issue- Cannot read state from browser in order to get access_token to pause music's play state.
+
   render() {
     return (
       <div>
         <div className="row justify-content-center align-items-center">
           <div className="col-12 text-align-center">
-            {this.state.userInfo
-              ? (
-                <h2>Welcome {this.state.userInfo.display_name}!</h2>
-              )
-              : ""}
             {!this.state.access_token
               ? (
                 <div className="disclaimerBox rounded">
@@ -183,8 +193,8 @@ class App extends Component {
                     className="center btn btn-lg loginBtn"
                     href="http://localhost:3001/api/auth/login">Log Into Spotify!
                     </a>
-                    <h3 className="center textColor">Disclaimer:</h3>
-                    <p className="center textColor">This requires for you to own your own Spotify Premium account</p>
+                  <h3 className="center textColor">Disclaimer:</h3>
+                  <p className="center textColor">This requires for you to own your own Spotify Premium account</p>
                 </div>
               )
               : (
@@ -198,45 +208,39 @@ class App extends Component {
                   <button className="btn btn-lg btn-info" onClick={this.getSpotifyPlaylists}>
                     Get Playlists
                     </button>
+                  <button className="btn btn-lg btn-warning" onClick={this.pauseTrack}>
+                    Pause
+                    </button>
                 </div>
               )}
           </div>
         </div>
-        <div className="container">
-          <div className="row">
-            {(this.state.playlistData && !this.state.showPlaylist)
-              ? (this.state.playlistData.items.map(playlist => {
-                return (
-                  <div className="col-3" key={playlist.id}>
-                    <div className="card">
-                      <img
-                        className="card-img-top"
-                        src={playlist.images[0].url}
-                        alt="playlist cover" />
-                      <div className="card-body">
-                        <h5 className="card-title">{playlist.name}</h5>
-                        <p className="card-text">{playlist.tracks.total
-                          ? playlist.tracks.total
-                          : 0} Tracks</p>
-                        <button onClick={() => this.getPlaylistTracks(playlist.id)} className="btn btn-primary">Load Playlist</button>
-                      </div>
-                    </div>
-                  </div>
-                )
-              }))
-              : (this.state.activePlaylist ? (
-                <div className="list-group">
-                  {this.state.activePlaylist.items.map(songData => {
-                    return (
-                      <button
-                        className="list-group-item list-group-item-action" key={songData.track.uri} onClick={() => this.playTrack(songData.track.uri)}>
-                        {songData.track.name} by {songData.track.artists[0].name}
-                      </button>
-                    )
-                  })}
-                </div>
-              ) : "")}
+        <div className="masterContainer">
+          <div className="contentContainer">
+            {this.state.userInfo
+              ? (
+                <h2 className="textColor welcome">Welcome {this.state.userInfo.display_name}!</h2>
+              )
+              : ""}
           </div>
+
+          {(this.state.playlistData && !this.state.showPlaylist)
+            ? (this.state.playlistData.items.map(playlist => {
+              return (
+                <div className="col-12" key={playlist.id}>
+                  <a onClick={() => this.getPlaylistTracks(playlist.id)} className="dataTag">{playlist.name}</a>
+                </div>
+              )
+            }))
+            : (this.state.activePlaylist ? (
+              <div className="list-group">
+                {this.state.activePlaylist.items.map(songData => {
+                  return (
+                    <a className="dataTag" onClick={() => this.playTrack(songData.track.uri)}>{songData.track.name} by {songData.track.artists[0].name}</a>
+                  )
+                })}
+              </div>
+            ) : "")}
         </div>
       </div>
     );
