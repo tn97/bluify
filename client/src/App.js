@@ -155,11 +155,6 @@ class App extends Component {
       });
   }
 
-  // getAlbumTracks = (albumId) => {
-  //   API
-  //     .getAlbumTracks(this.state., )
-  // }
-
   playTrack = (songURI) => {
     console.log(songURI);
     API
@@ -171,8 +166,9 @@ class App extends Component {
   }
 
   pauseTrack = () => {
+    console.log("access token: " + this.state.access_token)
     API
-      .pauseTrack(this.state.activePlayer.id, this.state.access_token)
+      .pauseTrack(this.state.access_token, this.state.activePlayer.id)
       .then(res => {
         console.log(res.data);
       })
