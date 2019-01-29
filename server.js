@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const morgan = require('morgan');
 const cors = require('cors');
+const cookieParser = require('cookie-parser')
 require('dotenv').config();
 
 // Import routes
@@ -13,7 +14,8 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
+app.use(cookieParser())
 // app.use(morgan('dev')); // for logging
 
 //We need to use sessions to keep track of our user's login status

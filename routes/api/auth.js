@@ -27,7 +27,6 @@ router
     const state = generateRandomString(16);
     // set cookie
     res.cookie(stateKey, state);
-
     // your application requests authorization
     const scope = 'streaming user-read-birthdate user-read-private user-read-email user-read-playback-state user-modify-playback-state user-library-read';
     // authorize account and send to callback route
@@ -46,6 +45,7 @@ router
       ? req.cookies[stateKey]
       : null;
 
+    console.log(`state: ${state}`)
     // if there's no information coming back then send error (CHANGE THIS TO JSON
     // RESPONSE)
     if (state === null || state !== storedState) {
