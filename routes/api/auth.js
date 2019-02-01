@@ -59,8 +59,8 @@ router
         url: 'https://accounts.spotify.com/api/token',
         form: {
           code: code,
-          // redirect_uri: 'http://localhost:3001/api/auth/spotify/callback',
-          redirect_uri: 'http://gentle-bastion-43872.herokuapp.com/api/auth/spotify/callback',
+          redirect_uri: 'http://localhost:3001/api/auth/spotify/callback',
+          // redirect_uri: 'http://gentle-bastion-43872.herokuapp.com/api/auth/spotify/callback',
           grant_type: 'authorization_code'
         },
         headers: {
