@@ -189,8 +189,9 @@ class App extends Component {
                     className="center btn btn-lg loginBtn"
                     href="http://localhost:3001/api/auth/login">Log Into Spotify!
                     </a>
-                  <h3 className="center textColor">Disclaimer:</h3>
-                  <p className="center textColor">This requires for you to own your own Spotify Premium account</p>
+                  <h3 className="center textColor">Guest account credentials:</h3>
+                  <p className="center textColor">username: sguest091@gmail.com</p>
+                  <p classname="center textColor">password: guestaccount</p>
                 </div>
               )
               : (
