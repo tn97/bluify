@@ -191,7 +191,7 @@ class App extends Component {
                     </a>
                   <h3 className="center textColor">Guest account credentials:</h3>
                   <p className="center textColor">username: sguest091@gmail.com</p>
-                  <p classname="center textColor">password: guestaccount</p>
+                  <p className="center textColor">password: guestaccount</p>
                 </div>
               )
               : (
