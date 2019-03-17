@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### A demo of the deployed application can be found [here](https://bluify.herokuapp.com/)
+
 ## Available Scripts
 
 In the project directory, you can run:
