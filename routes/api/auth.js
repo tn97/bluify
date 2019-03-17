@@ -30,7 +30,7 @@ router
     // your application requests authorization
     const scope = 'streaming user-read-birthdate user-read-private user-read-email user-read-playback-state user-modify-playback-state user-library-read';
     // authorize account and send to callback route
-    res.redirect('https://accounts.spotify.com/authorize?' + querystring.stringify({response_type: 'code', client_id: process.env.SPOTIFY_CLIENT, scope: scope, redirect_uri: 'http://localhost:3001/api/auth/spotify/callback', state: state}));
+    res.redirect('https://accounts.spotify.com/authorize?' + querystring.stringify({response_type: 'code', client_id: process.env.SPOTIFY_CLIENT, scope: scope, redirect_uri: 'https://bluify.herokuapp.com/    api/auth/spotify/callback', state: state}));
   });
 
 // callback route
@@ -59,7 +59,7 @@ router
         url: 'https://accounts.spotify.com/api/token',
         form: {
           code: code,
-          redirect_uri: 'http://localhost:3001/api/auth/spotify/callback',
+          redirect_uri: 'https://bluify.herokuapp.com/api/auth/spotify/callback',
           // redirect_uri: 'http://gentle-bastion-43872.herokuapp.com/api/auth/spotify/callback',
           grant_type: 'authorization_code'
         },
@@ -91,7 +91,7 @@ router
 
           // we can also pass the token to the browser to make requests from there
           // res.redirect('/#' + querystring.stringify({access_token: access_token, refresh_token: refresh_token}));
-          res.redirect('http://localhost:3000/#' + querystring.stringify({access_token: access_token, refresh_token: refresh_token}));
+          res.redirect('https://bluify.herokuapp.com/#' + querystring.stringify({access_token: access_token, refresh_token: refresh_token}));
         } else {
           res.redirect('/#' + querystring.stringify({error: 'invalid_token'}));
         }

@@ -187,7 +187,7 @@ class App extends Component {
                 <div className="disclaimerBox rounded">
                   <a
                     className="center btn btn-lg loginBtn"
-                    href="http://localhost:3001/api/auth/login">Log Into Spotify!
+                    href="https://bluify.herokuapp.com/api/auth/login">Log Into Spotify!
                     </a>
                   <h3 className="center textColor">Guest account credentials:</h3>
                   <p className="center textColor">username: sguest091@gmail.com</p>
