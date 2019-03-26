@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application was built to serve as a web-player for spotify. At the time of creation, spotify's API required all of the sound manipulation - including music playback - to go through spotify's API calls. As of that day, the music tool has been in beta, having lacked many functionalities to creating a decent web-player. 
+
+-Some functions that are not available yet include volume manipulation, and constant music playback.
+
+A premium account is **not** required to use this application, as Spotify allows for any user with an account to access a program using their api. Though if a spotify account is not owned, a guest account has been given on the home page of the application.
+
+If you wish to download this app and use it locally, all you have to do after downloading it is to either use yarn install or npm install and then use the yarn start or npm start command in the console. Instructions follow below.
 
 ### A demo of the deployed application can be found [here](https://bluify.herokuapp.com/)
 
