@@ -175,7 +175,7 @@ class App extends Component {
       .catch(err => { console.log(err) });
   }
 
-  // stopped after inserting pauseTrack into app.js and API.js. Issue- Cannot read state from browser in order to get access_token to pause music's play state.
+  // stopped after inserting pauseTrack into app.js and API.js. Issue- Cannot read state from browser in order to get access_token to pause music's play state. Spotify's API is not yet developed enough to the point that allows for full control over playback and choosing of the music; most likely due to legality reasons. As of 6-24-19 the issues still remains.
 
   render() {
     return (
